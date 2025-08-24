@@ -1,0 +1,16 @@
+name: base
+
+run-name: ${{github.actor}} is running actions
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+      - run: npm install -g bats
+      - run: bats -v
