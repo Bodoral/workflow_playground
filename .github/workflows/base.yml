@@ -11,5 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm install bats
-      - run: bats -v
+      - run: |
+           mkdir ~/.npm-global
+           npm config set prefix '~/.npm-global'
+           export PATH=~/.npm-global/bin:$PATH
+           npm install -g bats
+           bats -v
